@@ -34,16 +34,10 @@ class Auth extends CI_Controller{
 			}else if($data[0]['id_level'] == '4'){
 				redirect(site_url().'kabkk');
 			}else if($data[0]['id_level'] == '5'){
-				redirect(site_url().'wakasarpras');
+				redirect(site_url().'sarpras');
 			}
-
-//			echo "<br/>ID_User: ".$data[0]['id'];
-//			echo "<br/>Nama: ".$data[0]['nama'];
-//			echo "<br/>ID_Level: ".$data[0]['id_level'];
-//			echo "<br/>Kode Level: ".$data[0]['kode'];
-//			echo "<br/>Nama Level: ".$data[0]['nama_level'];
 		}else{
-			echo "Maaf data anda tidak kami ketahui";
+			echo "<script>alert('Maaf data yang anda masukan tidak kami ketahui!');window.location='".site_url()."auth';</script>";
 		}
 	}
 	public function do_logout(){
