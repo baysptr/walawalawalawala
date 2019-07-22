@@ -14,8 +14,9 @@ class Alternative_m extends CI_Model
 	public function select($id_kelompok){
 		$this->db
 			->select('alternative.*')
-			->from('kelompok')
-			->join('alternative', 'alternative.id=kelompok.id_alternative');
+			->from('detail_kelompok')
+			->join('alternative', 'alternative.id=detail_kelompok.id_jurusan')
+			->where('detail_kelompok.id_kelompok', $id_kelompok);
 		return $this->db->get()->result_array();
 	}
 

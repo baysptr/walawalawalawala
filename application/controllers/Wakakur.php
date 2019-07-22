@@ -6,6 +6,7 @@ class Wakakur extends CI_Controller{
 		parent::__construct();
 		$this->load->model('Layout_m');
 		$this->load->model('Kelompok_m');
+		$this->load->model('Detailkelompok_m');
 		$this->load->model('Peminatan_m');
 		$this->load->model('Alternative_m');
 		$this->is_logged_in();
@@ -32,19 +33,47 @@ class Wakakur extends CI_Controller{
 		$data['footer'] = $this->Layout_m->footer();
 		$data['javascript'] = $this->Layout_m->javascript();
 		$data['kelompoks'] = $this->Kelompok_m->getAll();
-		$data['jurusans'] = $this->Alternative_m->getAll();
 
 		$this->load->view('wakakur/kelompok', $data);
 	}
+
+	public function pengelompokan($id){
+		$data['head'] = $this->Layout_m->head();
+		$data['header'] = $this->Layout_m->header($this->session->userdata['level']);
+		$data['footer'] = $this->Layout_m->footer();
+		$data['javascript'] = $this->Layout_m->javascript();
+		$data['data'] = $this->Kelompok_m->getWhere($id);
+		$data['details'] = $this->Detailkelompok_m->getAll($id);
+		$data['jurusans'] = $this->Alternative_m->getAll();
+
+		$this->load->view('wakakur/pengelompokan', $data);
+	}
+
+	public function do_pengelompokan(){
+		$data = array(
+			"id_kelompok" => $this->input->post('id'),
+			"id_jurusan" => $this->input->post('jurusan')
+		);
+		$exec = $this->Detailkelompok_m->save($data);
+		if($exec){
+			echo "<script>window.location='".site_url()."wakakur/pengelompokan/".$this->input->post('id')."';</script>";
+		}else{
+			echo "<script>alert('Maaf sistem sedang mengalami kendala');window.location='".site_url()."wakakur/pengelompokan/".$this->input->post('id')."';</script>";
+		}
+	}
+
+	public function do_hapus_pengelompokan($id){
+		$this->Detailkelompok_m->hapus($id);
+		echo "<script>window.location='".site_url()."wakakur/kelompok';</script>";
+	}
+
 	public function do_kelompok(){
 		$id = $this->input->post('id');
 		$nama = $this->input->post('nama');
-		$mapel = $this->input->post('mapel');
 		$tgl = date("Y-m-d H:i:s");
 
 		$data = array(
 			"nama" => $nama,
-			"id_alternative" => $mapel,
 			"tgl_update" => $tgl
 		);
 		if($id == "" || $id == null){
@@ -99,6 +128,7 @@ class Wakakur extends CI_Controller{
 
 		$data = array(
 			"id_jurusan" => $jurusan,
+			"id_kelompok" => $this->input->post('kelompok'),
 			"bobot" => $bobot,
 			"pernyataan" => $pernyataan,
 			"tgl_update" => $tgl

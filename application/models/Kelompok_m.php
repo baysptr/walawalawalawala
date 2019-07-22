@@ -8,16 +8,21 @@ class Kelompok_m extends CI_Model
 		parent::__construct();
 	}
 	public function getAll(){
-		$this->db
-			->select('kelompok.*, alternative.nama as nama_jurusan, alternative.kode')
-			->from('kelompok')
-			->join('alternative', 'alternative.id=kelompok.id_alternative');
-		return $this->db->get()->result_array();
-//			return $this->db->get('kelompok')->result_array();
+//		$this->db
+//			->select('kelompok.*, alternative.nama as nama_jurusan, alternative.kode')
+//			->from('kelompok')
+//			->join('alternative', 'alternative.id=kelompok.id_alternative');
+//		return $this->db->get()->result_array();
+			return $this->db->get('kelompok')->result_array();
 	}
 
 	public function getWhere($id_kelompok){
-		return $this->db->get_where('kelompok', array('id' => $id_kelompok))->row();
+		$this->db
+			->select("*")
+			->from("kelompok")
+			->where("id", $id_kelompok);
+		return $this->db->get()->row();
+//		return $this->db->get_where('kelompok', array('id' => $id_kelompok))->row();
 	}
 
 	public function save($data){

@@ -12,18 +12,23 @@
 			<thead class="table-dark">
 				<tr>
 					<td><strong>NO</strong></td>
-					<td><strong>KELOMPOK MAPEL</strong></td>
-					<td colspan="3" width="30%"><div onclick="tambahUser()" class="btn btn-sm btn-block btn-primary"><span class="fa fa-user-plus"></span> Tambah</div> </td>
+					<td><strong>PERSENTASE</strong></td>
+					<td><strong>TAHUN</strong></td>
+					<td><strong>BOBOT</strong></td>
+					<td><strong>JURUSAN</strong></td>
+					<td colspan="2" width="20%"><div onclick="tambahUser()" class="btn btn-sm btn-block btn-primary"><span class="fa fa-user-plus"></span> Tambah</div> </td>
 				</tr>
 			</thead>
 			<tbody>
-			<?php $no = 1; foreach ($kelompoks as $kelompok){ ?>
+			<?php $no = 1; foreach ($kelulusans as $kelulusan){ ?>
 				<tr>
 					<td><?= $no++ ?></td>
-					<td><?= $kelompok['nama'] ?></td>
-					<td><a href="<?= site_url() ?>wakakur/pengelompokan/<?= $kelompok['id'] ?>" class="btn btn-sm btn-block btn-info"><span class="fa fa-edit"></span> Pengelompokan</a></td>
-					<td><div onclick="editUser('<?= $kelompok['id'] ?>')" class="btn btn-sm btn-block btn-warning"><span class="fa fa-user-edit"></span> Edit</div></td>
-					<td><div onclick="hapusUser('<?= $kelompok['id'] ?>')" class="btn btn-sm btn-block btn-danger"><span class="fa fa-user-times"></span> Delete</div></td>
+					<td><?= $kelulusan['persentase'] ?>%</td>
+					<td><?= $kelulusan['tahun'] ?></td>
+					<td><?= $kelulusan['bobot'] ?></td>
+					<td><?= $kelulusan['nama'] ?></td>
+					<td><div onclick="editUser('<?= $kelulusan['id'] ?>')" class="btn btn-sm btn-block btn-warning"><span class="fa fa-user-edit"></span> Edit</div></td>
+					<td><div onclick="hapusUser('<?= $kelulusan['id'] ?>')" class="btn btn-sm btn-block btn-danger"><span class="fa fa-user-times"></span> Delete</div></td>
 				</tr>
 			<?php } ?>
 			</tbody>
@@ -47,8 +52,27 @@
 					<input type="hidden" name="id" id="id">
 					<table class="table">
 						<tr>
-							<td><strong>Nama Kelompok</strong></td>
-							<td><input type="text" name="nama" id="nama" class="form-control"></td>
+							<td><strong>Persentase</strong></td>
+							<td><input type="text" name="persentase" id="persentase" class="form-control"></td>
+						</tr>
+						<tr>
+							<td><strong>tahun</strong></td>
+							<td><input type="text" name="tahun" id="tahun" class="form-control"></td>
+						</tr>
+						<tr>
+							<td><strong>Bobot</strong></td>
+							<td><input type="text" name="bobot" id="bobot" class="form-control"></td>
+						</tr>
+						<tr>
+							<td><strong>Jurusan</strong></td>
+							<td><select name="jurusan" id="jurusan" class="form-control">
+									<option selected disabled>-- Pilih Jurusan --</option>
+									<?php
+									foreach ($jurusans as $jurusan){
+									?>
+										<option value="<?= $jurusan['id'] ?>"><?= $jurusan['nama'] ?></option>
+									<?php } ?>
+								</select> </td>
 						</tr>
 					</table>
 				</form>
@@ -69,21 +93,23 @@
 	}
 	function editUser(id) {
 		$.ajax({
-			url: "<?= site_url() ?>wakakur/get_kelompok/" + id,
+			url: "<?= site_url() ?>kakom/get_kelulusan/" + id,
 			type: "GET",
 			dataType: "JSON",
 			success: function (data)
 			{
 				$("#id").val(data.id);
-				$("#nama").val(data.nama);
-				$("#mapel").val(data.id_alternative).change();
+				$("#tahun").val(data.tahun);
+				$("#persentase").val(data.persentase);
+				$("#bobot").val(data.bobot);
+				$("#jurusan").val(data.id_jurusan).change();
 				$("#modalKelompok").modal("show");
 			}
 		});
 	}
 	function insertUser() {
 		$.ajax({
-			url: '<?= site_url() ?>wakakur/do_kelompok',
+			url: '<?= site_url() ?>kakom/do_kelulusan',
 			type: 'POST',
 			processData: false,
 			cache: false,
@@ -104,7 +130,7 @@
 	function hapusUser(id) {
 		if(confirm("apakah anda yakin untuk menghapus bari data ini?")===true){
 			$.ajax({
-				url: "<?= site_url() ?>wakakur/hapus_kelompok/" + id,
+				url: "<?= site_url() ?>kakom/hapus_kelulusan/" + id,
 				type: "GET",
 				success: function (data)
 				{
