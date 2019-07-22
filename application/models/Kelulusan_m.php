@@ -11,7 +11,8 @@ class Kelulusan_m extends CI_Model
 		$this->db
 			->select("kelulusan.*, alternative.nama, alternative.kode")
 			->from("kelulusan")
-			->join("alternative", 'alternative.id=kelulusan.id_jurusan');
+			->join("alternative", 'alternative.id=kelulusan.id_jurusan')
+			->order_by("kelulusan.persentase", "asc");
 		return $this->db->get()->result_array();
 //		return $this->db->get('kelulusan')->result_array();
 	}

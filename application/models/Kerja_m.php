@@ -9,7 +9,7 @@ class Kerja_m extends CI_Model
 	}
 	public function getAll(){
 		$this->db
-			->select("*")
+			->select("kerja.*, alternative.nama")
 			->from('kerja')
 			->join('alternative', 'alternative.id=kerja.id_jurusan');
 		return $this->db->get()->result_array();
