@@ -5,10 +5,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<link href="<?= base_url() ?>assets/css/freelancer.min.css" rel="stylesheet">
-
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="$('#summary').hide()">
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
 	<div class="container">
 		<a class="navbar-brand js-scroll-trigger" href="#page-top">SMK. Ketintang Sby.</a>
@@ -201,11 +201,11 @@
 		</div>
 
 		<div class="text-center mt-4">
-			<a class="btn btn-xl btn-outline-dark" href="#sarpras">
+			<a class="btn btn-xl btn-outline-light" href="#sarpras">
 				<i class="fas fa-angle-double-down mr-2"></i>
 				Next
 			</a>
-			<a class="btn btn-xl btn-outline-dark" href="#contact">
+			<a class="btn btn-xl btn-outline-light" href="#contact">
 				<i class="fas fa-angle-double-up mr-2"></i>
 				Back
 			</a>
@@ -247,7 +247,7 @@
 						<tr>
 							<td style="text-align: center"><?= $no++ ?></td>
 							<td><?= $sarana['nama'] ?></td>
-							<td style="text-align: center"><?= $sarana['jumlah'] ?></td>
+							<td style="text-align: center"><?= $sarana['bobot'] ?></td>
 						</tr>
 					<?php } ?>
 					</tbody>
@@ -256,7 +256,7 @@
 		</div>
 
 		<div class="text-center mt-4">
-			<a class="btn btn-xl btn-outline-info" href="#">
+			<a class="btn btn-xl btn-outline-info" href="#penghasilan">
 				<i class="fas fa-angle-double-down mr-2"></i>
 				Next
 			</a>
@@ -264,6 +264,254 @@
 				<i class="fas fa-angle-double-up mr-2"></i>
 				Back
 			</a>
+		</div>
+	</div>
+</section>
+
+<form id="myForm" action="<?= site_url() ?>welcome/do_peminatan" method="post">
+<section class="page-section bg-info text-white mb-0" id="penghasilan">
+	<div class="container">
+
+		<!-- Contact Section Heading -->
+		<h2 class="page-section-heading text-center text-uppercase text-white mb-0">Kriteria Penghasilan Orang Tua</h2>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="divider-custom-line"></div>
+		</div>
+
+		<!-- Contact Section Form -->
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				ddjasd akjdsdjadk kdh kdh sadkjh ksdjdh kjh dkjh kdjs hskjhds kdsha kdjh kjsadh kjshd kjhsakjdh ksjdh kjsdh kjsah dcxk
+				<hr/>
+				<div class="form-group">
+					<label>Penghasilan Orang Tua</label>
+					<select name="penghasilan" id="penghasilan" class="form-control" onchange="myPenghasilan(this.value)">
+						<option selected disabled>-- Pilih Penghasilan Orang Tua --</option>
+						<?php foreach ($penghasilans as $penghasilan){ ?>
+							<option value="<?= $penghasilan['id'] ?>"><?= $penghasilan['ranges'] ?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			</div>
+
+		<div class="text-center mt-4">
+			<a class="btn btn-xl btn-outline-light" href="#sarpras">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Save Penghasilan
+			</a>
+			<a class="btn btn-xl btn-outline-light" href="#pelajaran">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Next
+			</a>
+			<a class="btn btn-xl btn-outline-light" href="#penghasilan">
+				<i class="fas fa-angle-double-up mr-2"></i>
+				Back
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="page-section" id="pelajaran">
+	<div class="container">
+
+		<!-- Contact Section Heading -->
+		<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Kriteria Nilai Mata Pelajaran</h2>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="divider-custom-line"></div>
+		</div>
+
+		<!-- Contact Section Form -->
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				ddjasd akjdsdjadk kdh kdh sadkjh ksdjdh kjh dkjh kdjs hskjhds kdsha kdjh kjsadh kjshd kjhsakjdh ksjdh kjsdh kjsah dcxk
+				<hr/>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Matematika</label>
+						<input type="text" name="mat" id="mat" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label>TIK</label>
+						<input type="text" name="tik" id="tik" class="form-control">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Bhs. Inggris</label>
+						<input type="text" name="inggris" id="inggris" class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label>Desain Gambar</label>
+						<input type="text" name="desain" id="desain" class="form-control">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Bhs. Indonesia</label>
+						<input type="text" name="indo" id="indo" class="form-control">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center mt-4">
+			<a class="btn btn-xl btn-outline-info" href="#penghasilan">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Save Nilai
+			</a>
+			<a class="btn btn-xl btn-outline-info" href="#pengenalan">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Next
+			</a>
+			<a class="btn btn-xl btn-outline-info" href="#penghasilan">
+				<i class="fas fa-angle-double-up mr-2"></i>
+				Back
+			</a>
+		</div>
+	</div>
+</section>
+
+<section class="masthead bg-primary text-white text-center" id="pengenalan">
+	<div class="container d-flex align-items-center flex-column">
+
+		<!-- Masthead Avatar Image -->
+		<img class="masthead-avatar mb-5" src="<?= base_url() ?>assets/img/avataaars.svg" alt="">
+
+		<!-- Masthead Heading -->
+		<h1 class="masthead-heading text-uppercase mb-0">SPK Minat Bakat Siswa</h1>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="divider-custom-line"></div>
+		</div>
+
+		<!-- Masthead Subheading -->
+		<p class="masthead-subheading font-weight-light mb-0">Selamat datang di Sistem Pengambilan Keputusan SMK. Ketintang SBY</p>
+
+		<div class="text-center mt-4">
+			<a class="btn btn-xl btn-outline-light" href="#pernyataan">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Mulai
+			</a>
+		</div>
+
+	</div>
+</section>
+
+<section class="page-section" id="pernyataan">
+	<div class="container">
+
+		<!-- Contact Section Heading -->
+		<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">SIstem Peminatan Jurusan</h2>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="divider-custom-line"></div>
+		</div>
+
+		<!-- Contact Section Form -->
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				Isilah dan nyatakan minat bakat anda
+				<hr/>
+				<?php
+				$f=5;
+				for($i=0;$i<12;$i++){
+					echo "<div class='form-group'><label>Pernyataan ke - ".($i+1)."</label><br/><select name='pernyataan[]' id='pernyataan[]' class='form-control' onchange='myPenghasilan(this.value)'><option selected disabled>-- Silahkan pilih pernyataan --</option>";
+					for($k=($f-5);$k<$f;$k++){
+						echo "<option value='".$peminatan[$k]['id']."'>".$peminatan[$k]['pernyataan']."</option>";
+//						echo "<br/>pertanyaan ke - ".$k;
+					}
+					$f += 5;
+					echo "</select></div>";
+				}
+				?>
+			</div>
+		</div>
+
+		<div class="text-center mt-4">
+<!--			<button type="submit" class="btn btn-xl btn-outline-info">-->
+<!--				<i class="fas fa-angle-double-down mr-2"></i>-->
+<!--				Summary Results-->
+<!--			</button>-->
+			<a class="btn btn-xl btn-outline-info" href="javascript:;" onclick="insertPeminatan()">
+				<i class="fas fa-angle-double-down mr-2"></i>
+				Summary Results
+			</a>
+			<a class="btn btn-xl btn-outline-info" href="#pengenalan">
+				<i class="fas fa-angle-double-up mr-2"></i>
+				Back
+			</a>
+		</div>
+	</div>
+</section>
+</form>
+
+<section class="page-section bg-secondary text-white mb-0" id="summary">
+	<div class="container">
+
+		<!-- Contact Section Heading -->
+		<h2 class="page-section-heading text-center text-uppercase text-white mb-0">Summary</h2>
+
+		<!-- Icon Divider -->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon">
+				<i class="fas fa-star"></i>
+			</div>
+			<div class="divider-custom-line"></div>
+		</div>
+
+		<!-- Contact Section Form -->
+		<div class="row">
+			<div class="col-lg-8 mx-auto">
+				Penentuan ini sifat nya tidak mutlak. Semua aktifitas ini akan tersimpan dalam sistem dan data baru direcord ini mempunyai kode sebagai berikut <strong id="kode"></strong>
+				<hr style="background-color: white"/>
+				<div id="piechart" style="width: 900px; height: 500px;"></div>
+				<table class="table" style="color: white;">
+					<tr>
+						<td>Akuntansi dan Keuangan Lembaga</td>
+						<td id="akl"></td>
+					</tr>
+					<tr>
+						<td>Otomatisasi dan Tata Kelola Perkantoran</td>
+						<td id="otkp"></td>
+					</tr>
+					<tr>
+						<td>Bisnis Daring dan Pemasaran</td>
+						<td id="bdp"></td>
+					</tr>
+					<tr>
+						<td>Teknik Komputer dan Jaringan</td>
+						<td id="tkj"></td>
+					</tr>
+					<tr>
+						<td>Multimedia</td>
+						<td id="mm"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 </section>
@@ -322,242 +570,6 @@
 	</a>
 </div>
 
-<!-- Portfolio Modals -->
-
-<!-- Portfolio Modal 1 -->
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/cabin.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Modal 2 -->
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/cake.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Modal 3 -->
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-labelledby="portfolioModal3Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/circus.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Modal 4 -->
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-labelledby="portfolioModal4Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/game.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Modal 5 -->
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-labelledby="portfolioModal5Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/safe.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-labelledby="portfolioModal6Label" aria-hidden="true">
-	<div class="modal-dialog modal-xl" role="document">
-		<div class="modal-content">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-			</button>
-			<div class="modal-body text-center">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-8">
-							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
-							<!-- Icon Divider -->
-							<div class="divider-custom">
-								<div class="divider-custom-line"></div>
-								<div class="divider-custom-icon">
-									<i class="fas fa-star"></i>
-								</div>
-								<div class="divider-custom-line"></div>
-							</div>
-							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="<?= base_url() ?>assets/img/portfolio/submarine.png" alt="">
-							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-							<button class="btn btn-primary" href="#" data-dismiss="modal">
-								<i class="fas fa-times fa-fw"></i>
-								Close Window
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!-- Bootstrap core JavaScript -->
 <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -571,6 +583,50 @@
 
 <!-- Custom scripts for this template -->
 <script src="<?= base_url() ?>assets/js/freelancer.min.js"></script>
+<script>
+	function myPenghasilan(val) {
+		console.log("Bobot Penghasilan: "+val);
+	}
+	function insertPeminatan() {
+		$.ajax({
+			url: '<?= site_url() ?>welcome/do_peminatan',
+			type: 'POST',
+			processData: false,
+			cache: false,
+			contentType: false,
+			data: new FormData($("#myForm")[0]),
+			success: function (data) {
+				console.log(data);
+				var mydata = JSON.parse(data);
+				$("#akl").html(mydata.akl + "%");
+				$("#otkp").html(mydata.otkp + "%");
+				$("#bdp").html(mydata.bdp + "%");
+				$("#tkj").html(mydata.tkj + "%");
+				$("#mm").html(mydata.mm + "%");
+				$("#kode").html(mydata.kode);
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+						['Task', 'Hours per Day'],
+						['AKL', mydata.akl],
+						['OTKP', mydata.otkp],
+						['BDP', mydata.bdp],
+						['TKJJ', mydata.tkj],
+						['MM', mydata.mm]
+					]);
+					var options = {'title':'Summary Data Peminatan Jurusan'};
+
+					// Display the chart inside the <div> element with id="piechart"
+					var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+					chart.draw(data, options);
+				}
+				$("#summary").show();
+			}
+		});
+	}
+
+</script>
 
 </body>
 

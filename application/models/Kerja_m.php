@@ -9,7 +9,7 @@ class Kerja_m extends CI_Model
 	}
 	public function getAll(){
 		$this->db
-			->select("kerja.*, alternative.nama")
+			->select("kerja.*, alternative.nama, alternative.kode")
 			->from('kerja')
 			->join('alternative', 'alternative.id=kerja.id_jurusan');
 		return $this->db->get()->result_array();
@@ -17,6 +17,9 @@ class Kerja_m extends CI_Model
 	}
 	public function getWhere($id_kerja){
 		return $this->db->get_where('kerja', array('id' => $id_kerja))->row();
+	}
+	public function getBobot($id_kerja){
+		return $this->db->get_where('kerja', array('id_jurusan' => $id_kerja))->row();
 	}
 
 	public function save($data){

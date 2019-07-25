@@ -21,6 +21,10 @@ class Kelulusan_m extends CI_Model
 		return $this->db->get_where('kelulusan', array('id' => $id_kelulusan))->row();
 	}
 
+	public function getBobot($id_kelulusan){
+		return $this->db->get_where('kelulusan', array('id_jurusan' => $id_kelulusan))->row();
+	}
+
 	public function save($data){
 		return $this->db->insert('kelulusan', $data);
 	}
