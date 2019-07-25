@@ -7,7 +7,7 @@ class Layout_m extends CI_Model{
 	}
 	public function head(){
 		$html = '<meta charset="utf-8">
-				<title>Shidiq</title>
+				<title>SPKSKETSA</title>
 				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 				<link href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
 				<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">';
@@ -17,7 +17,7 @@ class Layout_m extends CI_Model{
 		if($this->session->userdata['id_level'] == '1'){
 			$html = '<header>
 					<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-						<a class="navbar-brand" href="#">SPK SMK. XXXX</a>
+						<a class="navbar-brand" href="#">SPKSKETSA</a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>

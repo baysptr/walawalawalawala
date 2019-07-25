@@ -13,6 +13,7 @@
 	<input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
 	<hr/>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	<a href="<?= base_url() ?>" class="btn btn-lg btn-warning btn-block">Back!</a>
 	<p class="mt-5 mb-3 text-muted">SPK SMK. xxxx &copy; 2019-2020</p>
 </form>
 

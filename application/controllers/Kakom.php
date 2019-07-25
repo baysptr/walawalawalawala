@@ -9,6 +9,7 @@ class Kakom extends CI_Controller{
 		$this->load->model('Bobot_m');
 		$this->load->model('Kelulusan_m');
 		$this->load->model('Alternative_m');
+		$this->load->model('Summary_m');
 		$this->is_logged_in();
 	}
 	public function is_logged_in(){
@@ -117,5 +118,13 @@ class Kakom extends CI_Controller{
 	public function hapus_kelulusan($id){
 		$this->Kelulusan_m->hapus($id);
 		echo "TRUE";
+	}
+	public function summary(){
+		$data['head'] = $this->Layout_m->head();
+		$data['header'] = $this->Layout_m->header($this->session->userdata['level']);
+		$data['footer'] = $this->Layout_m->footer();
+		$data['javascript'] = $this->Layout_m->javascript();
+		$data['summary'] = $this->Summary_m->getSummary();
+		$this->load->view('kakom/summary', $data);
 	}
 }

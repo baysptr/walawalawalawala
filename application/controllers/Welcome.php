@@ -147,4 +147,9 @@ class Welcome extends CI_Controller {
 			return 0;
 		}
 	}
+
+	public function get_kode(){
+		$data = $this->Summary_m->getKode($this->input->post('kode'));
+		echo json_encode($data);
+	}
 }
