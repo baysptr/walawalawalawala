@@ -5,15 +5,21 @@
 	<link href="https://getbootstrap.com/docs/4.3/examples/sign-in/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-<form class="form-signin" style="text-align: left" action="<?= site_url() ?>Auth/do_login" method="post">
-	<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-	<label style="text-align: left">User</label>
-	<input type="text" id="user" name="user" class="form-control" placeholder="User Login" required autofocus>
+<form class="form-signin" style="text-align: left" action="<?= site_url() ?>Auth/do_daftar" method="post">
+	<h1 class="h3 mb-3 font-weight-normal">Daftar</h1>
+	<label style="text-align: left">Nama</label>
+	<input type="text" id="nama" name="nama" class="form-control" required autofocus>
+	<label style="text-align: left">No. Telp</label>
+	<input type="text" id="telp" name="telp" class="form-control" required>
+	<label style="text-align: left">e-Mail</label>
+	<input type="text" id="email" name="email" class="form-control" required>
+	<label style="text-align: left">Username</label>
+	<input type="text" id="user" name="user" class="form-control" required>
 	<label style="text-align: left">Password</label>
-	<input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
+	<input type="password" id="pass" name="pass" class="form-control" required>
 	<hr/>
-	<button class="btn btn-sm btn-primary btn-block" type="submit">Sign in</button>
-	<a href="<?= site_url() ?>auth/daftar" class="btn btn-sm btn-info btn-block">Daftar</a>
+	<button class="btn btn-sm btn-primary btn-block" type="submit">Daftar</button>
+	<a href="<?= site_url() ?>auth" class="btn btn-sm btn-info btn-block">Login!</a>
 	<a href="<?= base_url() ?>" class="btn btn-sm btn-warning btn-block">Back!</a>
 	<p class="mt-5 mb-3 text-muted">SPK SMK. xxxx &copy; 2019-2020</p>
 </form>

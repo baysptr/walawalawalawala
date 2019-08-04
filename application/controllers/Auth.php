@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("Asia/Jakarta");
 class Auth extends CI_Controller{
 	public function __construct()
 	{
@@ -8,6 +8,9 @@ class Auth extends CI_Controller{
 	}
 	public function index(){
 		$this->load->view('login');
+	}
+	public function daftar(){
+		$this->load->view('daftar');
 	}
 	public function do_login(){
 		$user = $this->input->post('user');
@@ -35,6 +38,8 @@ class Auth extends CI_Controller{
 				redirect(site_url().'kabkk');
 			}else if($data[0]['id_level'] == '5'){
 				redirect(site_url().'sarpras');
+			}else if($data[0]['id_level'] == '6'){
+				redirect(site_url().'guest');
 			}
 		}else{
 			echo "<script>alert('Maaf data yang anda masukan tidak kami ketahui!');window.location='".site_url()."auth';</script>";
@@ -44,5 +49,23 @@ class Auth extends CI_Controller{
 		$this->session->sess_destroy();
 
 		redirect(base_url());
+	}
+
+	public function do_daftar(){
+		$data = array(
+			"nama" => $this->input->post('nama'),
+			"no_telp" => $this->input->post('telp'),
+			"email" => $this->input->post('email'),
+			"user" => $this->input->post('user'),
+			"password" => md5($this->input->post('pass')),
+			"id_level" => "6",
+			"tgl_update" => date("Y-m-d H:i:s"),
+		);
+		$sql = $this->Auth_m->save($data);
+		if($sql){
+			echo "<script>alert('Login berhasil, Silahkan anda login');window.location='".site_url()."auth';</script>";
+		}else{
+			echo "<script>alert('Maaf anda gagal mendaftar, mohon hubungi admin');window.location='".site_url()."auth/daftar';</script>";
+		}
 	}
 }

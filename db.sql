@@ -190,7 +190,7 @@ CREATE TABLE `level` (
   `kode` text NOT NULL,
   `nama` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +199,7 @@ CREATE TABLE `level` (
 
 LOCK TABLES `level` WRITE;
 /*!40000 ALTER TABLE `level` DISABLE KEYS */;
-INSERT INTO `level` VALUES (1,'ADMIN','ADMIN'),(2,'WAKAKUR','WAKA KURIKULUM'),(3,'KAKOM','KEPALA KOMPETENSI'),(4,'KABKK','KEPALA BURSA KERJA'),(5,'WAKASARPRAS','WAKA SARANA & PRASARANA');
+INSERT INTO `level` VALUES (1,'ADMIN','ADMIN'),(2,'WAKAKUR','WAKA KURIKULUM'),(3,'KAKOM','KEPALA KOMPETENSI'),(4,'KABKK','KEPALA BURSA KERJA'),(5,'WAKASARPRAS','WAKA SARANA & PRASARANA'),(6,'GUEST','PESERTA PEMINATAN');
 /*!40000 ALTER TABLE `level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,6 +293,7 @@ DROP TABLE IF EXISTS `summary`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `summary` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_peserta` int(10) NOT NULL,
   `kode` text NOT NULL,
   `akl` text NOT NULL,
   `otkp` text NOT NULL,
@@ -301,7 +302,7 @@ CREATE TABLE `summary` (
   `mm` text NOT NULL,
   `tgl_update` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +311,6 @@ CREATE TABLE `summary` (
 
 LOCK TABLES `summary` WRITE;
 /*!40000 ALTER TABLE `summary` DISABLE KEYS */;
-INSERT INTO `summary` VALUES (45,'PJSK1','17','20','17','27','20','2019-07-25 01:30:41');
 /*!40000 ALTER TABLE `summary` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +331,7 @@ CREATE TABLE `user_log` (
   `id_level` text NOT NULL,
   `tgl_update` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,7 +340,7 @@ CREATE TABLE `user_log` (
 
 LOCK TABLES `user_log` WRITE;
 /*!40000 ALTER TABLE `user_log` DISABLE KEYS */;
-INSERT INTO `user_log` VALUES (1,'ADMIN','00000000000','ADMIN@HOST.COM','admin','0eff44c362b13fa25fc88a412f5512e1','1','2019-07-16 23:48:38'),(4,'fitro firmansyah','089580508080','fitro.firmansyah@gmail.com','fitro','62d64ff2c25b172872dd12d8cb5157c1','2','2019-07-17 00:15:13'),(5,'bayu','0000000000','bay@b.y','bayu','a430e06de5ce438d499c2e4063d60fd6','3','2019-07-20 13:31:47'),(6,'sri','098765743234','jhj@kjkhj.asds','sri','d1565ebd8247bbb01472f80e24ad29b6','4','2019-07-22 21:18:57'),(7,'sari','12345676787','sari@mmm.c','sari','a87bcf310c4fdf2a80f2f3d97f1f9424','5','2019-07-22 21:19:55');
+INSERT INTO `user_log` VALUES (1,'ADMIN','00000000000','ADMIN@HOST.COM','admin','0eff44c362b13fa25fc88a412f5512e1','1','2019-07-16 23:48:38'),(4,'fitro firmansyah','089580508080','fitro.firmansyah@gmail.com','fitro','62d64ff2c25b172872dd12d8cb5157c1','2','2019-07-17 00:15:13'),(5,'bayu','0000000000','bay@b.y','bayu','a430e06de5ce438d499c2e4063d60fd6','3','2019-07-20 13:31:47'),(6,'sri','098765743234','jhj@kjkhj.asds','sri','d1565ebd8247bbb01472f80e24ad29b6','4','2019-07-22 21:18:57'),(7,'sari','12345676787','sari@mmm.c','sari','a87bcf310c4fdf2a80f2f3d97f1f9424','5','2019-07-22 21:19:55'),(9,'susi','089580508080','fitro.firmansyah@gmail.com','susi','536931d80decb18c33db9612bdd004d4','6','2019-08-04 19:11:27');
 /*!40000 ALTER TABLE `user_log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -353,4 +353,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-25 13:00:23
+-- Dump completed on 2019-08-04 19:16:27

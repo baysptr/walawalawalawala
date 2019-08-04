@@ -14,4 +14,8 @@ class Auth_m extends CI_Model{
 			->where('user_log.password', $pass);
 		return $this->db->get();
 	}
+
+	public function save($data){
+		return $this->db->insert('user_log', $data);
+	}
 }
